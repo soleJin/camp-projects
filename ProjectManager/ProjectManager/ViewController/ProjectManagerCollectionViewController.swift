@@ -53,13 +53,19 @@ class ProjectManagerCollectionViewController: UIViewController {
     private func configureNavigationBar() {
         self.navigationItem.title = "Project Manager"
         let addButton = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(touchUpAddButton))
+        let historyButton = UIBarButtonItem(title: "History", style: .plain, target: self, action: #selector(touchUpHistoryButton))
         self.navigationItem.rightBarButtonItem = addButton
+        self.navigationItem.leftBarButtonItem = historyButton
     }
     
     @objc private func touchUpAddButton() {
         let listItemDetailViewController = ListItemDetailViewController(statusType: .todo, detailViewType: .create)
         let navigationController = UINavigationController(rootViewController: listItemDetailViewController)
         present(navigationController, animated: true, completion: nil)
+    }
+    
+    @objc private func touchUpHistoryButton() {
+        
     }
     
     private func configureToolBar() {
