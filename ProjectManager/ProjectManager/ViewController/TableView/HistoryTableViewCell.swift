@@ -66,4 +66,10 @@ class HistoryTableViewCell: UITableViewCell {
             lastModifiedTimeLabel.leadingAnchor.constraint(equalTo: contentsContainerView.leadingAnchor, constant: 20)
         ])
     }
+    
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        historyLabel.text = ""
+        lastModifiedTimeLabel.text = ""
+    }
 }
