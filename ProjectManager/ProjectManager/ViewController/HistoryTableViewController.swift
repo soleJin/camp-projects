@@ -34,13 +34,16 @@ extension HistoryTableViewController {
 // MARK: - UITableView DataSource
 extension HistoryTableViewController {
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 7
+        let historyList = History.shared.list
+        return historyList.count
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: HistoryTableViewCell.identifier, for: indexPath) as? HistoryTableViewCell else {
             return UITableViewCell()
         }
+        let item = History.shared.list[indexPath.row]
+        cell.fillLabels(item: item)
         return cell
     }
 }
