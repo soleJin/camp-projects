@@ -34,13 +34,13 @@ class ProjectManagerCollectionViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        NetworkStatus.shared.start()
         setUpDelegate()
         configureView()
         configureAutoLayout()
         configureNavigationBar()
         configureToolBar()
         ItemList.shared.loadList()
-        NetworkStatus.shared.start()
     }
     
     override func viewDidDisappear(_ animated: Bool) {
@@ -48,6 +48,7 @@ class ProjectManagerCollectionViewController: UIViewController {
     }
     
     private func setUpDelegate() {
+        NetworkStatus.shared.networkDelegate = self
         collectionView.dataSource = self
         collectionView.delegate = self
     }
@@ -142,3 +143,22 @@ extension ProjectManagerCollectionViewController: ListTableViewDelegate {
     }
 }
 
+extension ProjectManagerCollectionViewController: NetworkStatusDelegate {
+    func isConnected() {
+        DispatchQueue.main.async {
+            NSLayoutConstraint.activate([
+                self.networkingLabel.heightAnchor.constraint(equalToConstant: 0)
+            ])
+        }
+    }
+    
+    func isdisConnected() {
+        DispatchQueue.main.async {
+            NSLayoutConstraint.activate([
+                self.networkingLabel.heightAnchor.constraint(equalToConstant: 30)
+            ])
+        }
+    }
+    
+    
+}

@@ -7,10 +7,17 @@
 
 import Network
 
+protocol NetworkStatusDelegate: AnyObject {
+    func isConnected()
+    func isdisConnected()
+}
+
 class NetworkStatus {
     static let shared = NetworkStatus()
     private var moniter: NWPathMonitor
     private var queue = DispatchQueue.global()
+    
+    weak var networkDelegate: NetworkStatusDelegate?
     
     private init() {
         self.moniter = NWPathMonitor()
@@ -21,9 +28,9 @@ class NetworkStatus {
     func start() {
         self.moniter.pathUpdateHandler = { path in
             if path.status == .satisfied {
-                print("==============> YEAH! <================")
+                self.networkDelegate?.isConnected()
             } else {
-                print("=======> Here! noConnected!! =======")
+                self.networkDelegate?.isdisConnected()
             }
         }
     }
