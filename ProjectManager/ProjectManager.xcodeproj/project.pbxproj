@@ -17,6 +17,13 @@
 		E2B61D4E25FA6D8A007DF2FB /* ItemStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2B61D4D25FA6D89007DF2FB /* ItemStatus.swift */; };
 		E2B61D5125FA6DB0007DF2FB /* DetailViewType.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2B61D5025FA6DB0007DF2FB /* DetailViewType.swift */; };
 		E2B61D5525FA73ED007DF2FB /* TableHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2B61D5425FA73EC007DF2FB /* TableHeaderView.swift */; };
+		E2B61D6A2605F755007DF2FB /* HistoryTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2B61D692605F753007DF2FB /* HistoryTableViewController.swift */; };
+		E2B61D6E2605F7A8007DF2FB /* HistoryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2B61D6D2605F7A8007DF2FB /* HistoryTableViewCell.swift */; };
+		E2B61D722605F7D1007DF2FB /* CacheManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2B61D712605F7D1007DF2FB /* CacheManager.swift */; };
+		E2B61D752605F8A2007DF2FB /* History.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2B61D742605F8A2007DF2FB /* History.swift */; };
+		E2B61D782605F9B4007DF2FB /* HistoryItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2B61D772605F9B3007DF2FB /* HistoryItem.swift */; };
+		E2B61D7C2605FB2C007DF2FB /* URLManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2B61D7B2605FB2C007DF2FB /* URLManager.swift */; };
+		E2B61D7F2605FB3D007DF2FB /* ProjectManagerAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2B61D7E2605FB3D007DF2FB /* ProjectManagerAPI.swift */; };
 		FD4D22FA25F7109800FA6E6A /* ListItemDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD4D22F925F7109800FA6E6A /* ListItemDetailViewController.swift */; };
 		FD4D22FF25F7112200FA6E6A /* Todo.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD4D22FE25F7112200FA6E6A /* Todo.swift */; };
 		FD4D230825F7134000FA6E6A /* ListTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD4D230725F7134000FA6E6A /* ListTableView.swift */; };
@@ -37,6 +44,13 @@
 		E2B61D4D25FA6D89007DF2FB /* ItemStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemStatus.swift; sourceTree = "<group>"; };
 		E2B61D5025FA6DB0007DF2FB /* DetailViewType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewType.swift; sourceTree = "<group>"; };
 		E2B61D5425FA73EC007DF2FB /* TableHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableHeaderView.swift; sourceTree = "<group>"; };
+		E2B61D692605F753007DF2FB /* HistoryTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryTableViewController.swift; sourceTree = "<group>"; };
+		E2B61D6D2605F7A8007DF2FB /* HistoryTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryTableViewCell.swift; sourceTree = "<group>"; };
+		E2B61D712605F7D1007DF2FB /* CacheManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CacheManager.swift; sourceTree = "<group>"; };
+		E2B61D742605F8A2007DF2FB /* History.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = History.swift; sourceTree = "<group>"; };
+		E2B61D772605F9B3007DF2FB /* HistoryItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryItem.swift; sourceTree = "<group>"; };
+		E2B61D7B2605FB2C007DF2FB /* URLManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLManager.swift; sourceTree = "<group>"; };
+		E2B61D7E2605FB3D007DF2FB /* ProjectManagerAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectManagerAPI.swift; sourceTree = "<group>"; };
 		FD4D22F925F7109800FA6E6A /* ListItemDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListItemDetailViewController.swift; sourceTree = "<group>"; };
 		FD4D22FE25F7112200FA6E6A /* Todo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Todo.swift; sourceTree = "<group>"; };
 		FD4D230725F7134000FA6E6A /* ListTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListTableView.swift; sourceTree = "<group>"; };
@@ -82,12 +96,33 @@
 			path = ProjectManager;
 			sourceTree = "<group>";
 		};
+		E2B61D672605F496007DF2FB /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				E2B61D7B2605FB2C007DF2FB /* URLManager.swift */,
+				E2B61D7E2605FB3D007DF2FB /* ProjectManagerAPI.swift */,
+			);
+			path = Network;
+			sourceTree = "<group>";
+		};
+		E2B61D682605F4E6007DF2FB /* Cache */ = {
+			isa = PBXGroup;
+			children = (
+				E2B61D712605F7D1007DF2FB /* CacheManager.swift */,
+			);
+			path = Cache;
+			sourceTree = "<group>";
+		};
 		FD4D22FC25F710E100FA6E6A /* Model */ = {
 			isa = PBXGroup;
 			children = (
 				FD4D22FE25F7112200FA6E6A /* Todo.swift */,
 				E2B61D4D25FA6D89007DF2FB /* ItemStatus.swift */,
 				346C220525FB45EC00253919 /* ItemList.swift */,
+				E2B61D772605F9B3007DF2FB /* HistoryItem.swift */,
+				E2B61D742605F8A2007DF2FB /* History.swift */,
+				E2B61D672605F496007DF2FB /* Network */,
+				E2B61D682605F4E6007DF2FB /* Cache */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -99,6 +134,7 @@
 				346C220F25FF62D500253919 /* ProjectManagerCollectionVC+Drag&Drop.swift */,
 				FD4D22F925F7109800FA6E6A /* ListItemDetailViewController.swift */,
 				E2B61D5025FA6DB0007DF2FB /* DetailViewType.swift */,
+				E2B61D692605F753007DF2FB /* HistoryTableViewController.swift */,
 				FD4D230625F7130000FA6E6A /* TableView */,
 			);
 			path = ViewController;
@@ -122,6 +158,7 @@
 				FD4D230725F7134000FA6E6A /* ListTableView.swift */,
 				FD4D230B25F7134F00FA6E6A /* ListItemTableViewCell.swift */,
 				E2B61D5425FA73EC007DF2FB /* TableHeaderView.swift */,
+				E2B61D6D2605F7A8007DF2FB /* HistoryTableViewCell.swift */,
 			);
 			path = TableView;
 			sourceTree = "<group>";
@@ -203,16 +240,23 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E2B61D752605F8A2007DF2FB /* History.swift in Sources */,
 				FD4D230C25F7134F00FA6E6A /* ListItemTableViewCell.swift in Sources */,
+				E2B61D7F2605FB3D007DF2FB /* ProjectManagerAPI.swift in Sources */,
 				FD4D230825F7134000FA6E6A /* ListTableView.swift in Sources */,
 				C7431F0A25F51E1D0094C4CF /* ProjectManagerCollectionViewController.swift in Sources */,
 				E2B61D5125FA6DB0007DF2FB /* DetailViewType.swift in Sources */,
+				E2B61D6A2605F755007DF2FB /* HistoryTableViewController.swift in Sources */,
+				E2B61D7C2605FB2C007DF2FB /* URLManager.swift in Sources */,
 				346C220625FB45EC00253919 /* ItemList.swift in Sources */,
 				E2B61D4E25FA6D8A007DF2FB /* ItemStatus.swift in Sources */,
 				C7431F0625F51E1D0094C4CF /* AppDelegate.swift in Sources */,
 				FD4D231025F7138800FA6E6A /* Date+ConverToString.swift in Sources */,
+				E2B61D6E2605F7A8007DF2FB /* HistoryTableViewCell.swift in Sources */,
+				E2B61D782605F9B4007DF2FB /* HistoryItem.swift in Sources */,
 				346C221025FF62D500253919 /* ProjectManagerCollectionVC+Drag&Drop.swift in Sources */,
 				E2B61D5525FA73ED007DF2FB /* TableHeaderView.swift in Sources */,
+				E2B61D722605F7D1007DF2FB /* CacheManager.swift in Sources */,
 				FD4D22FA25F7109800FA6E6A /* ListItemDetailViewController.swift in Sources */,
 				C7431F0825F51E1D0094C4CF /* SceneDelegate.swift in Sources */,
 				FD4D22FF25F7112200FA6E6A /* Todo.swift in Sources */,
