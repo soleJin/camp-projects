@@ -8,7 +8,6 @@
 import UIKit
 
 class HistoryTableViewController: UITableViewController {
-    
     private var historyTableView: UITableView = {
         let tableView = UITableView(frame: .zero, style: .plain)
         tableView.translatesAutoresizingMaskIntoConstraints = false
@@ -35,5 +34,16 @@ class HistoryTableViewController: UITableViewController {
             historyTableView.leadingAnchor.constraint(equalTo: safeArea.leadingAnchor),
             historyTableView.trailingAnchor.constraint(equalTo: safeArea.trailingAnchor)
         ])
+    }
+}
+
+// MARK: - UITableView Delegate
+extension HistoryTableViewController {
+    override func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
+    }
+    
+    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 80
     }
 }
