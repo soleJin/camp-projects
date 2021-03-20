@@ -8,7 +8,7 @@
 import Foundation
 
 extension Date {
-    var toString: String {
+    var dayToString: String {
         let currentLocale = Locale.current.collatorIdentifier ?? "ko_KR"
         let dateFormatter = DateFormatter()
         
@@ -17,4 +17,14 @@ extension Date {
         dateFormatter.timeZone = TimeZone.autoupdatingCurrent
         return dateFormatter.string(from: self)
     }
+    
+    var timeToString: String {
+            let currentLocale = Locale.current.collatorIdentifier ?? "en_US"
+            let dateFormatter = DateFormatter()
+            
+            dateFormatter.locale = Locale(identifier: currentLocale)
+            dateFormatter.setLocalizedDateFormatFromTemplate("MMM d, yyyy h:mm:ss a")
+            dateFormatter.timeZone = TimeZone.autoupdatingCurrent
+            return dateFormatter.string(from: self)
+        }
 }
