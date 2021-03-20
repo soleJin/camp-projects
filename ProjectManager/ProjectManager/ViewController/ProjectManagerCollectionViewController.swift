@@ -159,6 +159,4 @@ extension ProjectManagerCollectionViewController: NetworkStatusDelegate {
             ])
         }
     }
-    
-    
 }
