@@ -28,6 +28,7 @@ class ProjectManagerCollectionViewController: UIViewController {
         configureAutoLayout()
         configureNavigationBar()
         configureToolBar()
+        ItemList.shared.loadList()
     }
     
     private func setUpDelegate() {
