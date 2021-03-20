@@ -64,8 +64,13 @@ class ProjectManagerCollectionViewController: UIViewController {
         present(navigationController, animated: true, completion: nil)
     }
     
-    @objc private func touchUpHistoryButton() {
-        
+    @objc private func touchUpHistoryButton(_ sender: UIBarButtonItem) {
+        let popoverViewController = HistoryTableViewController()
+        popoverViewController.modalPresentationStyle = .popover
+        popoverViewController.preferredContentSize = CGSize(width: 560, height: 560)
+        guard let popover: UIPopoverPresentationController = popoverViewController.popoverPresentationController else { return }
+        popover.barButtonItem = sender
+        present(popoverViewController, animated: true, completion: nil)
     }
     
     private func configureToolBar() {
