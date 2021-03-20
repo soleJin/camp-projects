@@ -77,7 +77,10 @@ extension ListTableView: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
+            let todo = ItemList.shared.getItem(statusType: statusType, index: indexPath.row)
             ItemList.shared.removeItem(statusType: statusType, index: indexPath.row)
+            let historyItem = HistoryItem(behavior: "Removed", item: todo, movedFrom: statusType.title, moveTo: nil)
+            History.shared.add(item: historyItem)
         }
     }
 }
@@ -120,6 +123,8 @@ extension ListTableView {
         
         itemProvider.registerDataRepresentation(forTypeIdentifier: kUTTypePlainText as String, visibility: .all) { completion in
             completion(data, nil)
+            let historyItem = HistoryItem(behavior: "Moved", item: item, movedFrom: self.statusType.title, moveTo: nil)
+            History.shared.add(item: historyItem)
             DispatchQueue.main.async {
                 ItemList.shared.removeItem(statusType: self.statusType, index: indexPath.row)
             }
@@ -146,7 +151,7 @@ extension ListTableView {
                 guard let todo = try? JSONDecoder().decode(Todo.self, from: data) else {
                     return
                 }
-                
+                History.shared.list[0].moveTo = self.statusType.title
                 DispatchQueue.main.async {
                     ItemList.shared.insertItem(statusType: self.statusType, index: insertionIndex.row, item: todo)
                 }

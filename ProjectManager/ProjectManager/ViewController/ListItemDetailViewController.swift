@@ -189,6 +189,8 @@ class ListItemDetailViewController: UIViewController {
         switch detailViewType {
         case .create:
             ItemList.shared.insertItem(statusType: .todo, item: todo)
+            let historyItem = HistoryItem(behavior: "Added", item: todo, movedFrom: nil, moveTo: nil)
+            History.shared.add(item: historyItem)
         case .edit:
             ItemList.shared.updateItem(statusType: statusType, index: itemIndex, item: todo)
         }
