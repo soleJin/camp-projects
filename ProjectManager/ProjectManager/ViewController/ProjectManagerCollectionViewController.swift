@@ -29,6 +29,11 @@ class ProjectManagerCollectionViewController: UIViewController {
         configureNavigationBar()
         configureToolBar()
         ItemList.shared.loadList()
+        NetworkStatus.shared.start()
+    }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        NetworkStatus.shared.stop()
     }
     
     private func setUpDelegate() {
@@ -120,3 +125,4 @@ extension ProjectManagerCollectionViewController: ListTableViewDelegate {
         present(navigationController, animated: true, completion: nil)
     }
 }
+
