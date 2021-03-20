@@ -22,4 +22,15 @@ enum ItemStatus {
             return "DONE"
         }
     }
+    
+    var fileName: String {
+        switch self {
+        case .todo:
+            return "todo.json"
+        case .doing:
+            return "doing.json"
+        case .done:
+            return "done.json"
+        }
+    }
 }
