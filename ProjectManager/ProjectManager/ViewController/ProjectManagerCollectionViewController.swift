@@ -21,6 +21,17 @@ class ProjectManagerCollectionViewController: UIViewController {
         return collectionView
     }()
     
+    private var networkingLabel: UILabel = {
+        let label = UILabel()
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.font = .boldSystemFont(ofSize: 20)
+        label.textColor = .white
+        label.backgroundColor = .red
+        label.text = "네트워크 연결되어 있지 않음"
+        label.textAlignment = .center
+        return label
+    }()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setUpDelegate()
@@ -44,6 +55,7 @@ class ProjectManagerCollectionViewController: UIViewController {
     private func configureView() {
         view.backgroundColor = .white
         view.addSubview(collectionView)
+        view.addSubview(networkingLabel)
     }
     
     private func configureAutoLayout() {
@@ -52,7 +64,11 @@ class ProjectManagerCollectionViewController: UIViewController {
             collectionView.topAnchor.constraint(equalTo: safeArea.topAnchor),
             collectionView.bottomAnchor.constraint(equalTo: safeArea.bottomAnchor),
             collectionView.leadingAnchor.constraint(equalTo: safeArea.leadingAnchor),
-            collectionView.trailingAnchor.constraint(equalTo: safeArea.trailingAnchor)
+            collectionView.trailingAnchor.constraint(equalTo: safeArea.trailingAnchor),
+            
+            networkingLabel.bottomAnchor.constraint(equalTo: safeArea.bottomAnchor),
+            networkingLabel.widthAnchor.constraint(equalTo: safeArea.widthAnchor),
+            networkingLabel.heightAnchor.constraint(equalToConstant: 30)
         ])
     }
     
