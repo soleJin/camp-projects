@@ -39,6 +39,7 @@ class HistoryTableViewCell: UITableViewCell {
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         configureContentsContainerView()
+        configureAutoLayout()
     }
     
     required init?(coder: NSCoder) {
@@ -49,5 +50,20 @@ class HistoryTableViewCell: UITableViewCell {
         contentView.addSubview(contentsContainerView)
         contentsContainerView.addSubview(historyLabel)
         contentsContainerView.addSubview(lastModifiedTimeLabel)
+    }
+    
+    private func configureAutoLayout() {
+        NSLayoutConstraint.activate([
+            contentsContainerView.centerXAnchor.constraint(equalTo: contentView.centerXAnchor),
+            contentsContainerView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor),
+            contentsContainerView.widthAnchor.constraint(equalTo: contentView.widthAnchor, multiplier: 1),
+            contentsContainerView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 8),
+            
+            historyLabel.topAnchor.constraint(equalTo: contentsContainerView.topAnchor, constant: 5),
+            historyLabel.leadingAnchor.constraint(equalTo: contentsContainerView.leadingAnchor, constant: 20),
+            
+            lastModifiedTimeLabel.topAnchor.constraint(equalTo: historyLabel.bottomAnchor, constant: 5),
+            lastModifiedTimeLabel.leadingAnchor.constraint(equalTo: contentsContainerView.leadingAnchor, constant: 20)
+        ])
     }
 }
