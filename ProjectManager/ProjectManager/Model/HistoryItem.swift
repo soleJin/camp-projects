@@ -8,5 +8,8 @@
 import Foundation
 
 struct HistoryItem {
-    
+    let behavior: String
+    let item: Todo
+    var movedFrom: String?
+    var moveTo: String?
 }
