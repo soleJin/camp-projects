@@ -67,6 +67,15 @@ class HistoryTableViewCell: UITableViewCell {
         ])
     }
     
+    func fillLabels(item: HistoryItem) {
+        lastModifiedTimeLabel.text = Date().timeToString
+        historyLabel.text = item.behavior + " '\(item.item.title)'"
+        guard let moveFrom = item.movedFrom else { return }
+        historyLabel.text! += "  form \(moveFrom)"
+        guard let moveTo = item.moveTo else { return }
+        historyLabel.text! += " to \(moveTo)"
+    }
+    
     override func prepareForReuse() {
         super.prepareForReuse()
         historyLabel.text = ""
