@@ -34,7 +34,7 @@ class ProjectManagerCollectionViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        NetworkStatus.shared.start()
+        NetworkMoniter.shared.start()
         setUpDelegate()
         configureView()
         configureAutoLayout()
@@ -44,11 +44,11 @@ class ProjectManagerCollectionViewController: UIViewController {
     }
     
     override func viewDidDisappear(_ animated: Bool) {
-        NetworkStatus.shared.stop()
+        NetworkMoniter.shared.stop()
     }
     
     private func setUpDelegate() {
-        NetworkStatus.shared.networkDelegate = self
+        NetworkMoniter.shared.networkDelegate = self
         collectionView.dataSource = self
         collectionView.delegate = self
     }

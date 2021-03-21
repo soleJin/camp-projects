@@ -12,10 +12,11 @@ protocol NetworkStatusDelegate: AnyObject {
     func isdisConnected()
 }
 
-class NetworkStatus {
-    static let shared = NetworkStatus()
+class NetworkMoniter {
+    static let shared = NetworkMoniter()
     private var moniter: NWPathMonitor
     private var queue = DispatchQueue.global()
+    private var isOn: Bool = true
     
     weak var networkDelegate: NetworkStatusDelegate?
     
@@ -27,6 +28,7 @@ class NetworkStatus {
     
     func start() {
         self.moniter.pathUpdateHandler = { path in
+            self.isOn = path.status == .satisfied
             if path.status == .satisfied {
                 self.networkDelegate?.isConnected()
             } else {
