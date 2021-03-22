@@ -144,19 +144,15 @@ extension ProjectManagerCollectionViewController: ListTableViewDelegate {
 }
 
 extension ProjectManagerCollectionViewController: NetworkStatusDelegate {
-    func isConnected() {
+    func isOn() {
         DispatchQueue.main.async {
-            NSLayoutConstraint.activate([
-                self.networkingLabel.heightAnchor.constraint(equalToConstant: 0)
-            ])
+            self.networkingLabel.isHidden = true
         }
     }
     
-    func isdisConnected() {
+    func isOff() {
         DispatchQueue.main.async {
-            NSLayoutConstraint.activate([
-                self.networkingLabel.heightAnchor.constraint(equalToConstant: 30)
-            ])
+            self.networkingLabel.isHidden = false
         }
     }
 }

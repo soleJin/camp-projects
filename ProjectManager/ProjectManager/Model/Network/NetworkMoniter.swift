@@ -8,15 +8,14 @@
 import Network
 
 protocol NetworkStatusDelegate: AnyObject {
-    func isConnected()
-    func isdisConnected()
+    func isOn()
+    func isOff()
 }
 
 class NetworkMoniter {
     static let shared = NetworkMoniter()
     private var moniter: NWPathMonitor
     private var queue = DispatchQueue.global()
-    private var isOn: Bool = true
     
     weak var networkDelegate: NetworkStatusDelegate?
     
@@ -28,11 +27,10 @@ class NetworkMoniter {
     
     func start() {
         self.moniter.pathUpdateHandler = { path in
-            self.isOn = path.status == .satisfied
             if path.status == .satisfied {
-                self.networkDelegate?.isConnected()
+                self.networkDelegate?.isOn()
             } else {
-                self.networkDelegate?.isdisConnected()
+                self.networkDelegate?.isOff()
             }
         }
     }
