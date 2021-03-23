@@ -30,6 +30,7 @@
 		FD4D230C25F7134F00FA6E6A /* ListItemTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD4D230B25F7134F00FA6E6A /* ListItemTableViewCell.swift */; };
 		FD4D231025F7138800FA6E6A /* Date+ConverToString.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD4D230F25F7138800FA6E6A /* Date+ConverToString.swift */; };
 		FDBD885726068C3900157834 /* NetworkMoniter.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDBD885626068C3900157834 /* NetworkMoniter.swift */; };
+		FDE8E90E260A138400804F77 /* Parser.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDE8E90D260A138400804F77 /* Parser.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -58,6 +59,7 @@
 		FD4D230B25F7134F00FA6E6A /* ListItemTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListItemTableViewCell.swift; sourceTree = "<group>"; };
 		FD4D230F25F7138800FA6E6A /* Date+ConverToString.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+ConverToString.swift"; sourceTree = "<group>"; };
 		FDBD885626068C3900157834 /* NetworkMoniter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkMoniter.swift; sourceTree = "<group>"; };
+		FDE8E90D260A138400804F77 /* Parser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Parser.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -91,6 +93,7 @@
 			isa = PBXGroup;
 			children = (
 				FD4D22FC25F710E100FA6E6A /* Model */,
+				FDE8E90C260A131B00804F77 /* Storage */,
 				FD4D22FD25F710EC00FA6E6A /* ViewController */,
 				FD4D230E25F7136700FA6E6A /* Extension */,
 				FD4D230225F7113000FA6E6A /* SupportingFiles */,
@@ -124,8 +127,6 @@
 				346C220525FB45EC00253919 /* ItemList.swift */,
 				E2B61D772605F9B3007DF2FB /* HistoryItem.swift */,
 				E2B61D742605F8A2007DF2FB /* History.swift */,
-				E2B61D672605F496007DF2FB /* Network */,
-				E2B61D682605F4E6007DF2FB /* Cache */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -172,6 +173,16 @@
 				FD4D230F25F7138800FA6E6A /* Date+ConverToString.swift */,
 			);
 			path = Extension;
+			sourceTree = "<group>";
+		};
+		FDE8E90C260A131B00804F77 /* Storage */ = {
+			isa = PBXGroup;
+			children = (
+				E2B61D672605F496007DF2FB /* Network */,
+				E2B61D682605F4E6007DF2FB /* Cache */,
+				FDE8E90D260A138400804F77 /* Parser.swift */,
+			);
+			path = Storage;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -255,6 +266,7 @@
 				346C220625FB45EC00253919 /* ItemList.swift in Sources */,
 				E2B61D4E25FA6D8A007DF2FB /* ItemStatus.swift in Sources */,
 				C7431F0625F51E1D0094C4CF /* AppDelegate.swift in Sources */,
+				FDE8E90E260A138400804F77 /* Parser.swift in Sources */,
 				FD4D231025F7138800FA6E6A /* Date+ConverToString.swift in Sources */,
 				E2B61D6E2605F7A8007DF2FB /* HistoryTableViewCell.swift in Sources */,
 				E2B61D782605F9B4007DF2FB /* HistoryItem.swift in Sources */,
