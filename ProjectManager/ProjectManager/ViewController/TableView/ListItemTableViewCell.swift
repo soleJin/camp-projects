@@ -93,7 +93,7 @@ class ListItemTableViewCell: UITableViewCell {
             }
         }
         
-        deadLineLabel.text = date.toString
+        deadLineLabel.text = date.dayToString
     }
     
     override func prepareForReuse() {

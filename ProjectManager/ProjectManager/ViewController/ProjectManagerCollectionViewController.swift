@@ -21,16 +21,34 @@ class ProjectManagerCollectionViewController: UIViewController {
         return collectionView
     }()
     
+    private var networkingLabel: UILabel = {
+        let label = UILabel()
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.font = .boldSystemFont(ofSize: 20)
+        label.textColor = .white
+        label.backgroundColor = .red
+        label.text = "네트워크 연결되어 있지 않음"
+        label.textAlignment = .center
+        return label
+    }()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        NetworkMoniter.shared.start()
         setUpDelegate()
         configureView()
         configureAutoLayout()
         configureNavigationBar()
         configureToolBar()
+        ItemList.shared.loadList()
+    }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        NetworkMoniter.shared.stop()
     }
     
     private func setUpDelegate() {
+        NetworkMoniter.shared.networkDelegate = self
         collectionView.dataSource = self
         collectionView.delegate = self
     }
@@ -38,6 +56,7 @@ class ProjectManagerCollectionViewController: UIViewController {
     private func configureView() {
         view.backgroundColor = .white
         view.addSubview(collectionView)
+        view.addSubview(networkingLabel)
     }
     
     private func configureAutoLayout() {
@@ -46,20 +65,35 @@ class ProjectManagerCollectionViewController: UIViewController {
             collectionView.topAnchor.constraint(equalTo: safeArea.topAnchor),
             collectionView.bottomAnchor.constraint(equalTo: safeArea.bottomAnchor),
             collectionView.leadingAnchor.constraint(equalTo: safeArea.leadingAnchor),
-            collectionView.trailingAnchor.constraint(equalTo: safeArea.trailingAnchor)
+            collectionView.trailingAnchor.constraint(equalTo: safeArea.trailingAnchor),
+            
+            networkingLabel.bottomAnchor.constraint(equalTo: safeArea.bottomAnchor),
+            networkingLabel.widthAnchor.constraint(equalTo: safeArea.widthAnchor),
+            networkingLabel.heightAnchor.constraint(equalToConstant: 30)
         ])
     }
     
     private func configureNavigationBar() {
         self.navigationItem.title = "Project Manager"
         let addButton = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(touchUpAddButton))
+        let historyButton = UIBarButtonItem(title: "History", style: .plain, target: self, action: #selector(touchUpHistoryButton))
         self.navigationItem.rightBarButtonItem = addButton
+        self.navigationItem.leftBarButtonItem = historyButton
     }
     
     @objc private func touchUpAddButton() {
         let listItemDetailViewController = ListItemDetailViewController(statusType: .todo, detailViewType: .create)
         let navigationController = UINavigationController(rootViewController: listItemDetailViewController)
         present(navigationController, animated: true, completion: nil)
+    }
+    
+    @objc private func touchUpHistoryButton(_ sender: UIBarButtonItem) {
+        let popoverViewController = HistoryTableViewController()
+        popoverViewController.modalPresentationStyle = .popover
+        popoverViewController.preferredContentSize = CGSize(width: 560, height: 560)
+        guard let popover: UIPopoverPresentationController = popoverViewController.popoverPresentationController else { return }
+        popover.barButtonItem = sender
+        present(popoverViewController, animated: true, completion: nil)
     }
     
     private func configureToolBar() {
@@ -106,5 +140,19 @@ extension ProjectManagerCollectionViewController: ListTableViewDelegate {
     func presentEditView(listItemDetailViewController: ListItemDetailViewController) {
         let navigationController = UINavigationController(rootViewController: listItemDetailViewController)
         present(navigationController, animated: true, completion: nil)
+    }
+}
+
+extension ProjectManagerCollectionViewController: NetworkStatusDelegate {
+    func isOn() {
+        DispatchQueue.main.async {
+            self.networkingLabel.isHidden = true
+        }
+    }
+    
+    func isOff() {
+        DispatchQueue.main.async {
+            self.networkingLabel.isHidden = false
+        }
     }
 }
