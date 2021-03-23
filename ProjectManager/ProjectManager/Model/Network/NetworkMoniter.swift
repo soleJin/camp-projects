@@ -7,9 +7,9 @@
 
 import Network
 
-protocol NetworkStatusDelegate: AnyObject {
-    func isOn()
-    func isOff()
+protocol NetworkMoniterDelegate: AnyObject {
+    func didConnect()
+    func didDisconnect()
 }
 
 class NetworkMoniter {
@@ -17,7 +17,7 @@ class NetworkMoniter {
     private var moniter: NWPathMonitor
     private var queue = DispatchQueue.global()
     
-    weak var networkDelegate: NetworkStatusDelegate?
+    weak var delegate: NetworkMoniterDelegate?
     
     private init() {
         self.moniter = NWPathMonitor()
@@ -28,9 +28,9 @@ class NetworkMoniter {
     func start() {
         self.moniter.pathUpdateHandler = { path in
             if path.status == .satisfied {
-                self.networkDelegate?.isOn()
+                self.delegate?.didConnect()
             } else {
-                self.networkDelegate?.isOff()
+                self.delegate?.didDisconnect()
             }
         }
     }

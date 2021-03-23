@@ -48,7 +48,7 @@ class ProjectManagerCollectionViewController: UIViewController {
     }
     
     private func setUpDelegate() {
-        NetworkMoniter.shared.networkDelegate = self
+        NetworkMoniter.shared.delegate = self
         collectionView.dataSource = self
         collectionView.delegate = self
     }
@@ -143,14 +143,15 @@ extension ProjectManagerCollectionViewController: ListTableViewDelegate {
     }
 }
 
-extension ProjectManagerCollectionViewController: NetworkStatusDelegate {
-    func isOn() {
+extension ProjectManagerCollectionViewController: NetworkMoniterDelegate {
+    
+    func didConnect() {
         DispatchQueue.main.async {
-            self.networkingLabel.isHidden = true
+            self.networkingLabel.isHidden = false
         }
     }
     
-    func isOff() {
+    func didDisconnect() {
         DispatchQueue.main.async {
             self.networkingLabel.isHidden = false
         }
