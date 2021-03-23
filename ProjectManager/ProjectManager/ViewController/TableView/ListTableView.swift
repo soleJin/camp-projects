@@ -121,10 +121,10 @@ extension ListTableView {
         let itemProvider = NSItemProvider()
         let dragItem = UIDragItem(itemProvider: itemProvider)
         let historyItem = HistoryItem(behavior: "Moved", item: item, movedFrom: self.statusType.title, moveTo: nil)
+        History.shared.add(item: historyItem)
         
         itemProvider.registerDataRepresentation(forTypeIdentifier: kUTTypePlainText as String, visibility: .all) { completion in
             completion(data, nil)
-            History.shared.add(item: historyItem)
             DispatchQueue.main.async {
                 ItemList.shared.removeItem(statusType: self.statusType, index: indexPath.row)
             }
