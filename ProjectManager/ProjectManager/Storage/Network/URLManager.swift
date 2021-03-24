@@ -44,4 +44,16 @@ enum Task {
             return "/todo/\(id)"
         }
     }
+    var method: HTTPMethod {
+        switch self {
+        case .loadTodos, .loadTodo:
+            return .get
+        case .uploadTodo:
+            return .post
+        case .editTodo:
+            return .patch
+        case .delete:
+            return .delete
+        }
+    }
 }
