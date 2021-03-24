@@ -33,4 +33,15 @@ enum Task {
     case uploadTodo(todo: Todo)
     case editTodo(id: Int, todo: Todo)
     case delete(id: Int, todo: Todo)
+    
+    var path: String {
+        switch self {
+        case .loadTodos, .uploadTodo:
+            return "/todos"
+        case .loadTodo(let id):
+            return "todos/\(id)"
+        case .editTodo(let id, _), .delete(let id, _):
+            return "/todo/\(id)"
+        }
+    }
 }
