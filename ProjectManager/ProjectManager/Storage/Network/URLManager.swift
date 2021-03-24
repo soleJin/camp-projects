@@ -56,4 +56,16 @@ enum Task {
             return .delete
         }
     }
+    var encodedData: Data? {
+        switch self {
+        case .loadTodos, .loadTodo:
+            return nil
+        case .uploadTodo(let todo):
+            return Parser.encodeData(todo)
+        case .editTodo(_, let todo):
+            return Parser.encodeData(todo)
+        case .delete(_, let todo):
+            return Parser.encodeData(todo)
+        }
+    }
 }
