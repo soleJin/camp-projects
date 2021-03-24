@@ -26,3 +26,11 @@ enum HTTPMethod: CustomStringConvertible {
         }
     }
 }
+
+enum Task {
+    case loadTodos
+    case loadTodo(id: Int)
+    case uploadTodo(todo: Todo)
+    case editTodo(id: Int, todo: Todo)
+    case delete(id: Int, todo: Todo)
+}
