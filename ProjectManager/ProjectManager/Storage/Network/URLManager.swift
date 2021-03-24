@@ -68,6 +68,10 @@ enum Task {
             return Parser.encodeData(todo)
         }
     }
+    var urlRequest: URLRequest? {
+        let url = URLManager.makeURLRequest(task: self)
+        return url
+    }
 }
 
 struct URLManager {
