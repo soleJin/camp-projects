@@ -184,7 +184,7 @@ class ListItemDetailViewController: UIViewController {
         }
         let description = descriptionTextView.text
         let deadline = deadLineDatePickerEnableToggleButton.isSelected ? nil: deadLineDatePicker.date
-        let todo = Todo(title: title, descriptions: description, deadLine: deadline)
+        let todo = Todo(title: title, descriptions: description, deadLine: deadline, status: 0, id: nil)
         
         switch detailViewType {
         case .create:

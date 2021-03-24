@@ -147,7 +147,7 @@ extension ProjectManagerCollectionViewController: NetworkMoniterDelegate {
     
     func didConnect() {
         DispatchQueue.main.async {
-            self.networkingLabel.isHidden = false
+            self.networkingLabel.isHidden = true
         }
     }
     
