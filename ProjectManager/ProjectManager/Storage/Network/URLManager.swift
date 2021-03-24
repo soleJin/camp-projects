@@ -69,3 +69,25 @@ enum Task {
         }
     }
 }
+
+struct URLManager {
+    static let baseURL: URL = URL(string: "https://project-manager-server-app.herokuapp.com")!
+    
+    static private func makeURL(task: Task) -> URL {
+        let path = task.path
+        if path.isEmpty {
+            return baseURL
+        } else {
+            return baseURL.appendingPathComponent(path)
+        }
+    }
+    
+    static func makeURLRequest(task: Task) -> URLRequest {
+        let url = URLManager.makeURL(task: task)
+        var urlRequest = URLRequest(url: url)
+        urlRequest.httpMethod = task.method.description
+        urlRequest.addValue("application/json", forHTTPHeaderField: "Content-Type")
+        urlRequest.httpBody = task.encodedData
+        return urlRequest
+    }
+}
